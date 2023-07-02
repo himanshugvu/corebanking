@@ -1,21 +1,25 @@
 spring:
+  application:
+    name: corebanking
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://mysql-db:3306/corebanking?createDatabaseIfNotExist=true
     username: root
     password: gapicbsg
-    hikari:
-      autoCommit: true
-      idleTimeout: 10000
-      minimumIdle: 5
-      maximumPoolSize: 20
 
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: none
+management:
+  endpoints:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    web:
+      exposure:
+        include: "beans,env,health,info,metrics,mappings,prometheus"
+
 logging:
   level:
-    com.zaxxer: DEBUG
+    root: INFO

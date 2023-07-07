@@ -35,7 +35,7 @@ public class TransactionHistoryController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> checkAccountBalance(
             @Valid @RequestBody TransactionHistoryRequest transactionHistoryRequest) {
-        log.debug("Triggered AccountRestController.accountInput");
+        log.info("Triggered AccountRestController.accountInput");
         Account account = accountService.getAccount(
                 transactionHistoryRequest.getProductCode(), transactionHistoryRequest.getAccountNumber());
         TransactionHistoryResponse transactionHistoryResponse =

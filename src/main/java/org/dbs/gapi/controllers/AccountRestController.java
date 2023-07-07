@@ -31,7 +31,7 @@ public class AccountRestController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> checkAccountBalance(
             @Valid @RequestBody AccountInput accountInput) {
-        log.debug("Triggered AccountRestController.accountInput");
+        log.info("Triggered AccountRestController.accountInput");
         if (InputValidator.isSearchCriteriaValid(accountInput)) {
             Account account = accountService.getAccount(
                     accountInput.getProductCode(), accountInput.getAccountNumber());
@@ -50,7 +50,7 @@ public class AccountRestController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createAccount() {
-        log.debug("Triggered AccountRestController.createAccountInput");
+        log.info("Triggered AccountRestController.createAccountInput");
             Account account = accountService.createAccount();
             if (account == null) {
                 return new ResponseEntity<>(GapiConstants.CREATE_ACCOUNT_FAILED, HttpStatus.OK);
